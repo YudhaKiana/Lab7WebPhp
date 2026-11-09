@@ -62,8 +62,6 @@ Lab7Web_PHP/
 
 **Hasil:** Browser hanya menampilkan teks "PHP berhasil dijalankan." dan waktu server. Kode PHP tidak terlihat karena sudah dieksekusi server, dan yang dikirim ke browser hanya hasil HTML-nya.
 
-![Latihan 1](screenshots/latihan1.png)
-
 ---
 
 ### Latihan 2 — Variabel, Operator, dan Percabangan
@@ -86,8 +84,6 @@ Lab7Web_PHP/
 | 60 | 60 | 60 | 60,00 | C |
 | 40 | 50 | 50 | 47,00 | D |
 
-![Latihan 2](screenshots/latihan2.png)
-
 ---
 
 ### Latihan 3 — Perulangan dan Array
@@ -96,8 +92,6 @@ Lab7Web_PHP/
 **Penjelasan:** Array `$mahasiswa` berisi 7 nama (4 dari modul + Eka, Fajar, Gita). `foreach` menelusuri tiap elemen dan menampilkannya sebagai item `<li>` dalam daftar bernomor `<ol>`.
 
 **Hasil:** Ketujuh nama tampil berurutan.
-
-![Latihan 3](screenshots/latihan3.png)
 
 ---
 
@@ -111,8 +105,6 @@ Lab7Web_PHP/
 - Luas persegi panjang 8 × 4: **32**
 - Nilai 75: **Lulus**, nilai 60: **Tidak Lulus**
 
-![Latihan 4](screenshots/latihan4.png)
-
 ---
 
 ### Latihan 5 — Form dengan GET
@@ -121,8 +113,6 @@ Lab7Web_PHP/
 **Penjelasan:** Form memakai `method="GET"`, sehingga data dikirim lewat URL dan dibaca dengan `$_GET["kata"]`. `isset()` memastikan data ada, `trim()` membuang spasi, dan `htmlspecialchars()` mengamankan tampilan.
 
 **Hasil:** Setelah tombol Cari ditekan, URL berubah menjadi `latihan5.php?kata=...`. Ini membuktikan data GET terlihat di address bar, sehingga **tidak boleh** dipakai untuk kata sandi atau data sensitif.
-
-![Latihan 5](screenshots/latihan5.png)
 
 ---
 
@@ -138,9 +128,6 @@ Lab7Web_PHP/
 | Nama: `Rina`, Prodi: `Teknik Informatika` | Data ditampilkan |
 | Salah satu kolom kosong / hanya spasi | "Semua kolom wajib diisi." |
 | Nama: `<b>Rina</b> "uji"` | Tag tampil sebagai teks biasa, tidak dieksekusi (berkat `htmlspecialchars`) |
-
-![Latihan 6 - data lengkap](screenshots/latihan6_valid.png)
-![Latihan 6 - karakter khusus](screenshots/latihan6_html.png)
 
 ---
 
@@ -160,9 +147,6 @@ Lab7Web_PHP/
 | Buku | abc | 2 | Pesan error |
 
 > Validasi HTML (`min`, `required`) bisa menghalangi pengiriman di browser. Untuk menguji validasi PHP, tambahkan atribut `novalidate` pada `<form>` secara sementara.
-
-![Latihan 7 - valid](screenshots/latihan7_valid.png)
-![Latihan 7 - tidak valid](screenshots/latihan7_invalid.png)
 
 ---
 
@@ -187,16 +171,11 @@ Lab7Web_PHP/
 | 1 | Rina Putri, 2024010001, Teknik Informatika, semester 3, rina@mail.com | Ringkasan data ditampilkan |
 | 2 | Budi Santoso, 2023020055, Sistem Informasi, semester 14, budi.s@kampus.ac.id | Ringkasan data ditampilkan |
 
-![Mini project - valid](screenshots/mini_valid.png)
-
 ### Dua kasus input tidak valid
 | No | Input | Hasil |
 |---|---|---|
 | 1 | Semua kolom kosong | Error: nama, NIM, prodi, email, dan semester |
 | 2 | NIM `12AB`, semester `20`, email `rina@` | Error: NIM, email, dan semester |
-
-![Mini project - tidak valid](screenshots/mini_invalid.png)
-
 ---
 
 ## 7. Eksperimen Mandiri
@@ -212,8 +191,6 @@ Lab7Web_PHP/
 
 **Perbedaan tombol reset dan pemrosesan ulang di server:** tombol `type="reset"` hanya mengosongkan isian form di browser tanpa mengirim request ke server dan tanpa menjalankan PHP. Tombol submit mengirim request ke server, PHP memproses ulang data, dan halaman dibuat ulang.
 
-![Eksperimen](screenshots/eksperimen.png)
-
 ---
 
 ## 8. Jawaban Pertanyaan Evaluasi
@@ -226,4 +203,18 @@ Lab7Web_PHP/
 7. **Manfaat function.** Kode dapat dipakai ulang, lebih rapi, lebih mudah diuji dan dirawat, serta mengurangi duplikasi.
 
 ## 9. Kesimpulan
-(Tulis kesimpulan Anda sendiri dengan kata-kata Anda: apa yang dipelajari, kendala yang dihadapi, dan cara mengatasinya.)
+## 9. Kesimpulan
+
+Dari Praktikum 7 ini saya memahami bahwa PHP adalah bahasa pemrograman server-side, yaitu kodenya dijalankan di server dan browser hanya menerima hasil akhirnya berupa HTML. Karena itu file PHP harus dijalankan lewat web server lokal seperti XAMPP atau Laragon, bukan dibuka langsung dengan klik ganda.
+
+Pada latihan dasar, saya belajar menulis variabel dengan awalan `$`, menggunakan operator, percabangan `if-elseif-else`, perulangan `foreach` pada array, serta membuat function agar kode bisa dipakai ulang dan lebih rapi.
+
+Pada pemrosesan form, saya mempelajari perbedaan metode GET dan POST. GET mengirim data lewat URL sehingga terlihat di address bar dan tidak cocok untuk data sensitif, sedangkan POST mengirim data lewat body request dan lazim dipakai untuk pengiriman form. Namun POST bukan enkripsi, sehingga tetap perlu HTTPS.
+
+Hal terpenting yang saya pelajari adalah bahwa input pengguna tidak boleh langsung dipercaya. Validasi di browser (seperti atribut `required`) mudah dilewati, sehingga validasi di sisi server tetap wajib. Saya menerapkannya dengan `isset()` dan operator `??` untuk memeriksa keberadaan data, `trim()` untuk membuang spasi, `is_numeric()` dan `ctype_digit()` untuk memeriksa angka, serta `filter_var()` untuk memeriksa format email. Saat menampilkan kembali data pengguna, saya memakai `htmlspecialchars()` agar tag HTML atau script tampil sebagai teks biasa dan tidak dijalankan (mencegah XSS).
+
+Melalui mini project Formulir Data Mahasiswa, saya berhasil menggabungkan semua konsep tersebut menjadi aplikasi sederhana yang menerima data, memvalidasinya, menampilkan seluruh pesan kesalahan, dan menampilkan ringkasan data jika input valid. Memisahkan bagian pemrosesan dari bagian tampilan membuat kode lebih mudah dibaca dan dikembangkan.
+
+Kendala yang saya temui: (isi dengan pengalaman Anda sendiri, misalnya server Apache belum menyala, salah menaruh folder di htdocs, atau lupa tanda titik koma). Kendala tersebut saya atasi dengan (isi solusi Anda).
+
+Ke depan, pengetahuan ini bisa menjadi dasar untuk mempelajari penyimpanan data ke database, session, dan pengembangan aplikasi web yang lebih lengkap.
